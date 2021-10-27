@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import a from './data'
 
 import Tentti_Kristian from './Tentti_Kristian';
+import Tentti_Ville from "./VillenKansio/Tentti_Ville"
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
     <div>
       {/* <Tentti/> */}
       <Tentti_Kristian />
+      <Tentti_Ville />
     </div>
   );
 }
