@@ -18,15 +18,13 @@ function Tentti_Kristian() {
       "vastaus": "2."
     });
 
+
+
+    return(
+      <div>
+        <p>{kysymys.kysymys}</p>
+        <p>{kysymys.vastaus}</p>
+      </div>
+    );
 }
-
-
-
-return(
-  <div>
-    <p>{kysymys.kysymys}</p>
-    <p>{kysymys.vastaus}</p>
-  </div>
-);
-
 export default Tentti_Kristian;
