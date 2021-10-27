@@ -31,7 +31,7 @@ function Tentti_Kristian() {
     <div>
       <p>KRISTIANIN TENTTIRENDERI</p>
       <hr></hr>
-      <TulostaKysymys kysymykset={kysymykset}></TulostaKysymys>
+
       <hr></hr>
     </div>
   );

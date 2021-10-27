@@ -17,7 +17,8 @@ function TulostaKysymys(props) {
     <div>
       <p>{props.kysymys.kysymys}</p>
       <p>{props.kysymys.vastaus}</p>
-    </div>);
+    </div>
+  );
 }
 
 export default TulostaKysymys;
