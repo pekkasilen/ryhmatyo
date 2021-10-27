@@ -15,8 +15,17 @@ function TulostaKysymys(props) {
 
   return (
     <div>
-      <p>{props.kysymys.kysymys}</p>
-      <p>{props.kysymys.vastaus}</p>
+      {props.kysymykset.map(Q =>
+        <div>
+          {Q.kysymys}
+          <p>
+            {Q.vaihtoehdot.map(V =>
+              <div>
+                {V}
+              </div>)}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
