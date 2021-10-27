@@ -13,16 +13,25 @@ const axios = require('axios');
 
 function Tentti_Kristian() {
 
-  const [kysymys, setKysymys]
-    = useState({
-      "kysymys": "Paljonko on 1 + 1?",
-      "vastaus": "2."
-    });
+  const [kysymykset, setKysymykset]
+    = useState([
+      {
+        "kysymys": "Paljonko on 1 + 1?",
+        "vastaus": "2."
+      },
+      {
+        "kysymys": "Minä vuonna Suomi itsenäistyi?",
+        "vastaus": "Vuonna 1917."
+      }
+    ]);
 
 
   return (
     <div>
-      <TulostaKysymys kysymys={kysymys}></TulostaKysymys>
+      <p>KRISTIANIN TENTTIRENDERI</p>
+      <hr></hr>
+      <TulostaKysymys kysymys={kysymykset[0]}></TulostaKysymys>
+      <hr></hr>
     </div>
   );
 

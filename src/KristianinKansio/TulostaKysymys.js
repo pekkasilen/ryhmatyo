@@ -16,11 +16,8 @@ function TulostaKysymys(props) {
 
   return (
     <div>
-      <hr></hr>
-      <p>KRISTIANIN TENTTIRENDERI</p>
       <p>{props.kysymys.kysymys}</p>
       <p>{props.kysymys.vastaus}</p>
-      <hr></hr>
     </div>);
 }
 
