@@ -1,31 +1,27 @@
 export let questions = [
     {   id:1,
-        category: javascript,
+        category: "javascript",
         question:"Mitä muuttujan näkyvyysalue tarkoittaa?",
         answer: [
-        {1:"Sitä, kuinka kaukaa muuttuja näkyy ilman kaukoputkea tai kiikareita"},
-        {2:"Sitä, missä kohtaa ohjelmaa muuttujaa voi käyttää"},
-        {3:"Sitä, miten helppo muuttujien käyttöä on synkronoida säikeiden kesken"},
-        {4:"Sitä, miten helppo muuttujia on käyttää eri ohjelman osista"},
-        {5:"Sitä, miten helppo muuttujien käyttöä on synkronoida säikeiden kesken"}
+        {id:1, answ:"Sitä, kuinka kaukaa muuttuja näkyy ilman kaukoputkea tai kiikareita"},
+        {id:2, answ:"Sitä, missä kohtaa ohjelmaa muuttujaa voi käyttää"},
+        {id:3, answ:"Sitä, miten helppo muuttujien käyttöä on synkronoida säikeiden kesken"},
+        {id:4, answ:"Sitä, miten helppo muuttujia on käyttää eri ohjelman osista"},
+        {id:5, answ:"Sitä, miten helppo muuttujien käyttöä on synkronoida säikeiden kesken"}
         ],
-        correct1:1,
-        // if multiple?
-        correct2:null
+        correct: [2 ,4]
     },
     {   id:2,
-        category: javascript,
+        category: "javascript",
         question:"Luokkien hyvä puoli on, että",
         answer: [
-            {1:"niiden avulla koodia on helpompi moduloida"},
-            {2:"niden avulla on helppo uudelleenkäyttää ohjelmakoodia"},
-            {3:"niiden avulla on helppo kirjoittaa koodia, joka tukee hyvin kompositiota"},
-            {4:"ne tarjoavat hyvän abstraktion kaikkeen mahdolliseen"},
-            {5:"niiden avulla on helppo kirjoittaa monisäikeisiä sovelluksia"}
+            {id:1, answ:"niiden avulla koodia on helpompi moduloida"},
+            {id:2, answ:"niden avulla on helppo uudelleenkäyttää ohjelmakoodia"},
+            {id:3, answ:"niiden avulla on helppo kirjoittaa koodia, joka tukee hyvin kompositiota"},
+            {id:4, answ:"ne tarjoavat hyvän abstraktion kaikkeen mahdolliseen"},
+            {id:5, answ:"niiden avulla on helppo kirjoittaa monisäikeisiä sovelluksia"}
             ],
-        correct1:4,
-        // if multiple?
-        correct2:null
+        correct: [2 ,5]
     }]
 
     // app:n alkuun
