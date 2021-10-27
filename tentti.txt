@@ -1,0 +1,42 @@
+
+
+<Tentti>
+	<Kysymys>
+		<Vastaus1>
+			<CheckBox/>
+			<p></p>
+			<poista/>
+		</Vastaus1>
+		
+
+		<LisääVastaus/>
+		<PoistaKysymys/>
+	</Kysymys>
+	
+	<LisääKysymys>
+		<TextField/> //Merkkijonona kysymys
+		<Button/>  //tallenna
+		
+	</LisääKysymys>
+</Tentti>
+	
+
+Simplistinen versio--->
+
+<Tentti>
+	<Kysymys>
+		<Vastaus/>
+	</Kysymys>
+</Tentti>
+
+
+vastaukset[] ---> Palvelimelle tsekattavaksi
+
+Tentissä meillä on lista objekteista 
+[
+	{"kysymys": "paljonko tonni kiveä painaa?",
+	 "vastaukset": [2kg,6kg,8kg,14kg]},
+	{},
+	{}
+]
+
