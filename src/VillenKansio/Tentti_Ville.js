@@ -15,10 +15,13 @@ function Tentti_Ville() {
                    <div className="Question">
                        <input checked={item.CB} type="checkbox"></input>
                        <p>{item.väittämä}</p>
-                       <button>Roskapönttö</button>
+                       <button hidden={true}>Poista väittämä</button>
                     </div>)}
+                    <button hidden={true}>Lisää väittämä</button>
                 </div>
             </div>)}
+            <input hidden={true} type="text" placeholder="Tähän annetaan kysymys"></input>
+            <button hidden={true}>Lisää kysymys</button>
         </div>
     )
 }
