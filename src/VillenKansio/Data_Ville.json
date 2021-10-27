@@ -1,0 +1,16 @@
+[
+    {"kysymys":"Villen testikysymys 1", "väittämät":[
+        {"väittämä": "testi1", "CB": false},
+        {"väittämä": "testi2", "CB": true},
+        {"väittämä": "testi3", "CB": true},
+        {"väittämä": "testi4", "CB": false}
+    ]
+    },
+    {"kysymys":"Villen testikysymys 2", "väittämät":[
+        {"väittämä": "2testi1", "CB": true},
+        {"väittämä": "2testi2", "CB": true},
+        {"väittämä": "2testi3", "CB": false},
+        {"väittämä": "2testi4", "CB": true}
+    ]
+    }
+]
