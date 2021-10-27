@@ -6,7 +6,7 @@
 */
 
 import React, { useState, useEffect } from 'react';
-import TulostaKysymykset from './TulostaKysymykset';
+import TulostaKysymys from './TulostaKysymys';
 
 const axios = require('axios');
 
@@ -31,7 +31,7 @@ function Tentti_Kristian() {
     <div>
       <p>KRISTIANIN TENTTIRENDERI</p>
       <hr></hr>
-      <TulostaKysymykset kysymykset={kysymykset}></TulostaKysymykset>
+      <TulostaKysymys kysymykset={kysymykset}></TulostaKysymys>
       <hr></hr>
     </div>
   );
