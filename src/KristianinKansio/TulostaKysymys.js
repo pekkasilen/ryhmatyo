@@ -13,14 +13,15 @@ const axios = require('axios');
 
 function TulostaKysymys(props) {
 
-  <div>
-    <hr></hr>
-    <p>KRISTIANIN TENTTIRENDERI</p>
-    <p>{props.kysymys}</p>
-    <p>{props.vastaus}</p>
-    <hr></hr>
-  </div>
 
+  return (
+    <div>
+      <hr></hr>
+      <p>KRISTIANIN TENTTIRENDERI</p>
+      <p>{props.kysymys.kysymys}</p>
+      <p>{props.kysymys.vastaus}</p>
+      <hr></hr>
+    </div>);
 }
 
 export default TulostaKysymys;
