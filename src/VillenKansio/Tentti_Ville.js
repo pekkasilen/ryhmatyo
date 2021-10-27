@@ -14,7 +14,8 @@ function Tentti_Ville() {
                    {item.väittämät.map(item => 
                    <div className="Question">
                        <input checked={item.CB} type="checkbox"></input>
-                       {item.väittämä}
+                       <p>{item.väittämä}</p>
+                       <button>Roskapönttö</button>
                     </div>)}
                 </div>
             </div>)}

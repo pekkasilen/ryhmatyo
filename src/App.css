@@ -87,4 +87,18 @@
   min-width: 450px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.Question input {
+  margin-left: 0.5em;
+}
+
+.Question p {
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+}
+
+.Question button {
+  margin: 0.5em;
 }
