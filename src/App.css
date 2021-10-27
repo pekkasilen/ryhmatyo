@@ -36,3 +36,55 @@
     transform: rotate(360deg);
   }
 }
+
+
+.QuestionCardView {
+  background: linear-gradient(
+    to right top,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.35)
+  );
+  border-radius: 6px;
+  width:auto;
+  height:auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  color: whitesmoke;
+  margin: 0.15em;
+  box-shadow: -30px 30px 20px rgba(0,0,0,0.35);
+}
+
+.Container {
+  margin: 0.5em;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-width: 450px;
+
+}
+
+.Container-inputs {
+  display: flex;
+}
+
+.Container-inputs input {
+  width: 75%;
+}
+
+.Container-inputs button {
+  width: 25%;
+}
+
+.Question {
+  margin: 1.5px;
+  border-radius: 4px;
+  color: #666;
+  background: whitesmoke;
+  height: auto;
+  min-width: 450px;
+  display: flex;
+  align-items: center;
+}
