@@ -6,29 +6,35 @@
 */
 
 import React, { useState, useEffect } from 'react';
+import TulostaKysymys from './TulostaKysymys';
 
 const axios = require('axios');
 
 
 function Tentti_Kristian() {
 
-  const [kysymys, setKysymys]
-    = useState({
-      "kysymys": "Paljonko on 1 + 1?",
-      "vastaus": "2."
-    });
+  const [kysymykset, setKysymykset]
+    = useState([
+      {
+        "kysymys": "Paljonko on 1 + 1?",
+        "vastaus": "2."
+      },
+      {
+        "kysymys": "Minä vuonna Suomi itsenäistyi?",
+        "vastaus": "Vuonna 1917."
+      }
+    ]);
 
 
-
-    return(
-      <div>
-        <hr></hr>
-        <p>Kristianin tenttirenderi</p>
-        <p>{kysymys.kysymys}</p>
-        <p>{kysymys.vastaus}</p>
-        <hr></hr>
-      </div>
-    );
+    
+  return (
+    <div>
+      <p>KRISTIANIN TENTTIRENDERI</p>
+      <hr></hr>
+      <TulostaKysymys kysymys={kysymykset[0]}></TulostaKysymys>
+      <hr></hr>
+    </div>
+  );
 }
 
 export default Tentti_Kristian;
