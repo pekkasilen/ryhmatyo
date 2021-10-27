@@ -26,6 +26,7 @@ function Tentti_Kristian() {
     ]);
 
 
+    
   return (
     <div>
       <p>KRISTIANIN TENTTIRENDERI</p>
@@ -34,18 +35,6 @@ function Tentti_Kristian() {
       <hr></hr>
     </div>
   );
-
-  /*
-  return (
-    <div>
-      <hr></hr>
-      <p>KRISTIANIN TENTTIRENDERI</p>
-      <p>{kysymys.kysymys}</p>
-      <p>{kysymys.vastaus}</p>
-      <hr></hr>
-    </div>
-  );
-  */
 }
 
 export default Tentti_Kristian;
