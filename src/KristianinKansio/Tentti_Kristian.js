@@ -6,6 +6,7 @@
 */
 
 import React, { useState, useEffect } from 'react';
+import TulostaKysymys from './TulostaKysymys';
 
 const axios = require('axios');
 
@@ -19,16 +20,23 @@ function Tentti_Kristian() {
     });
 
 
+  return (
+    <div>
+      <TulostaKysymys kysymys={kysymys}></TulostaKysymys>
+    </div>
+  );
 
-    return(
-      <div>
-        <hr></hr>
-        <p>Kristianin tenttirenderi</p>
-        <p>{kysymys.kysymys}</p>
-        <p>{kysymys.vastaus}</p>
-        <hr></hr>
-      </div>
-    );
+  /*
+  return (
+    <div>
+      <hr></hr>
+      <p>KRISTIANIN TENTTIRENDERI</p>
+      <p>{kysymys.kysymys}</p>
+      <p>{kysymys.vastaus}</p>
+      <hr></hr>
+    </div>
+  );
+  */
 }
 
 export default Tentti_Kristian;
