@@ -18,36 +18,70 @@ function Tentti_Kristian() {
       {
         kysymys: "Paljonko on 1 + 1?",
         vaihtoehdot: ["0", "1", "2", "3"],
-        vastaus: "2."
+        vastaukset: [false, false, true, false],
+        CB: [false, false, false, false]
+        /*
+        vaihtoehdot: [
+          ["0", false, false],
+          ["1", false, false],
+          ["2", true, false],
+          ["3", false, false]
+        ]
+        */
       },
       {
         kysymys: "Minä vuonna Suomi itsenäistyi?",
         vaihtoehdot: ["1917", "1918", "1919", "1995"],
-        vastaus: "Vuonna 1917."
+        vastaukset: [true, false, false, false],
+        CB: [false, false, false, false]
+        /*
+        vaihtoehdot: [
+          ["1917", true, false],
+          ["1918", false, false],
+          ["1919", false, false],
+          ["1995", false, false]
+        ]
+        */
       }
     ]);
+
+
+  const checkBox = (kysymysIndeksi, vastausIndeksi) => {
+    console.log(kysymysIndeksi, vastausIndeksi);
+    let uusiVastaus = [...Kysymykset];
+    console.log(uusiVastaus[0].CB)
+    
+  };
+
 
   return (
     <div>
       <p>KRISTIANIN TENTTIRENDERI</p>
       <hr></hr>
-      <TulostaKysymys kysymykset={Kysymykset}></TulostaKysymys>
+      {Kysymykset.map((Q, Qind) =>
+        <div key={Qind}>
+          {Q.kysymys}
+          {Q.vaihtoehdot.map((V, Vind) =>
+            <div key={Vind}>
+              <p>
+                <input type="checkbox" id={V}
+                  onChange={() => checkBox(Qind, Vind)}></input>
+                <label for={V}>{V}</label>
+              </p>
+            </div>)}
+        </div>
+      )}
+      <hr></hr>
     </div>
   );
-
-
 
   /*
   return (
     <div>
       <p>KRISTIANIN TENTTIRENDERI</p>
       <hr></hr>
-      {Kysymykset.map(Q => 
-        <div>
-          <p>{Q.kysymys}</p>
-          <p>{Q.vastaus}</p>
-        </div>
-      )}
+      <TulostaKysymys kysymykset={Kysymykset}
+        setKysymykset={setKysymykset}></TulostaKysymys>
       <hr></hr>
     </div>
   );

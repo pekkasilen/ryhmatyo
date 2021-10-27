@@ -6,6 +6,7 @@
       Kysymyksen tulostamiseen komponentti
 */
 
+import { CheckRounded } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
 
 const axios = require('axios');
@@ -16,14 +17,16 @@ function TulostaKysymys(props) {
   return (
     <div>
       {props.kysymykset.map(Q =>
-        <div>
+        <div key={Q.id}>
           {Q.kysymys}
-          <p>
-            {Q.vaihtoehdot.map(V =>
-              <div>
-                {V}
-              </div>)}
-          </p>
+          {Q.vaihtoehdot.map(V =>
+            <div key={V.id}>
+              <p>
+                <input type="checkbox" id={V} checked={false}
+                  onClick={null}></input>
+                <label for={V}>{V}</label>
+              </p>
+            </div>)}
         </div>
       )}
     </div>
