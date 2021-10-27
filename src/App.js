@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import { useEffect } from 'react';
 import a from './data'
 
-import Tentti_Kristian from './Tentti_Kristian';
+import Tentti_Kristian from './KristianinKansio/Tentti_Kristian';
 import Tentti_Ville from "./VillenKansio/Tentti_Ville"
 
 function App() {
