@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Grid from '@mui/material/Grid';
 import kys from './data.json';
 import List from '@mui/material/List';
@@ -9,6 +9,11 @@ import { Button } from "@mui/material";
 
 const CheckBoxes = (props) => {
     const [checked, setChecked] = useState(false);
+
+    useEffect(()=>{
+        props.hc(props.k,props.v);
+        //console.log("vastattu kysymykseen "+props.k+" checkkaamalla vastausta "+props.v);
+    },[checked]);
     return(
       <FormControlLabel
         control={<Checkbox
@@ -27,18 +32,17 @@ const CheckBoxes = (props) => {
 const Vastaus = (props) => {
     return (
         <div>
-            <CheckBoxes l={props.v.v}/>
+            <CheckBoxes l={props.v.v} hc={props.hc} k={props.k} v={props.v.id}/>
         </div>
     )
 }
 
 const Kyssari = (props) => {
-    console.log(props.kysymys);
     return (
         <ListItemText>
             <Paper sx={{padding:3}} elevation={12}>
                 <Typography variant="h5">{props.in.kysymys}</Typography>
-                {props.in.vastaukset.map((x,i)=> <Vastaus v={x} key={i}></Vastaus>)}
+                {props.in.vastaukset.map((x,i)=> <Vastaus k={props.in.id} hc={props.hc} v={x} key={i}></Vastaus>)}
             </Paper>
                 <Divider/>
         </ListItemText>
@@ -48,7 +52,17 @@ const Kyssari = (props) => {
 
 
 export default function PekanTentti() {
-    //console.log(kys);
+    const m = 10; //max nr of Questions
+    const n = 10; //max nr of Answer options;
+    const [checks, setChecks] = useState(Array.from({length: m},()=> Array.from({length: n}, () => false)));
+    
+    const handleChange = (k,v) => {
+        var updateChecks = [...checks];
+        updateChecks[k-1][v-1]=!checks[k-1][v-1]
+        setChecks(updateChecks);
+    }
+    
+
     return(
         <div>
             <Typography variant="h5" color="primary">Kaikkien alojen erityisasiantuntijan tentti</Typography>
@@ -56,7 +70,7 @@ export default function PekanTentti() {
             <Grid container spacing={1}>
                 </Grid>
                     <Grid item xs={12} key={1}>
-                        {kys.map((x,i)=> <Kyssari in={x} key={i}></Kyssari>)}
+                        {kys.map((x,i)=> <Kyssari in={x} key={i} hc={handleChange}></Kyssari>)}
                     </Grid>
                 <Grid>
             </Grid>
