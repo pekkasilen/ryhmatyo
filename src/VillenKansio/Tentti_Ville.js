@@ -5,11 +5,8 @@ function Tentti_Ville() {
 
     const [tentti,setTentti] = useState(localStorage.getItem("Villen") !== null?JSON.parse(localStorage.getItem("Villen")):Data_Ville)
     const [kysymysTeksti, setKysymysTeksti] = useState("")
-    const [hidden1,setHidden1] = useState (true)
-    const [hidden2,setHidden2] = useState (true)
-    const [hidden3,setHidden3] = useState (true)
-    const [hidden4,setHidden4] = useState (true)
-    const [hidden5,setHidden5] = useState (true)
+    const [väittämäTeksti,setVäittämäTeksti] = useState("")
+    const [lupa,setLupa] = useState (true)
 
     const checkBoxPainettu = (item) => {
         item.CB = !item.CB
@@ -17,9 +14,9 @@ function Tentti_Ville() {
     }
 
     const muokkaaVäittämä = (item) => {
-        console.log(item.väittämä);
-        item.väittämä = "muutostesti1234" // tähän tietysti input
+        item.väittämä = väittämäTeksti
         setTentti([...tentti])
+        setVäittämäTeksti("")
     }
 
     const poistaVäittämä = (itemX, index) => {
@@ -28,11 +25,11 @@ function Tentti_Ville() {
     }
 
     const lisääVäittämä = (item) => {
-        item.väittämät.push({väittämä: 'lisäätesti1234', CB: false})
+        item.väittämät.push({väittämä: "lisää väittämä", CB: false})
         setTentti([...tentti])
     }
 
-    const poistaKysymys = (itemX, indexX) => {
+    const poistaKysymys = (indexX) => {
         tentti.splice(indexX,1)
         setTentti([...tentti])
     }
@@ -43,17 +40,13 @@ function Tentti_Ville() {
     }
 
     const tallennaTentti = () => {
-        alert("Tällä hetkellä Tallenna tentti ei tee mitään")
+        alert("Tallennettiin localStorageen")
         localStorage.setItem("Villen",JSON.stringify(tentti))
         // ehkä joku osaa muokata tuota data filua?
     }
 
     const adminMode = () => {
-        setHidden1(!hidden1)
-        setHidden2(!hidden2)
-        setHidden3(!hidden3)
-        setHidden4(!hidden4)
-        setHidden5(!hidden5)
+        setLupa(!lupa)
     }
 
     return (
@@ -61,21 +54,21 @@ function Tentti_Ville() {
         <button onClick={adminMode}>Admin mode</button>
            {tentti.map((itemX, indexX) => 
            <div className="QuestionCardView">
-               {itemX.kysymys}
+               <input disabled={lupa} type="text" placeholder={itemX.kysymys}></input>
                <div className="Container">
                    {itemX.väittämät.map((item, index) => 
                    <div className="Question">
                        <input onClick={() => checkBoxPainettu(item)} checked={item.CB} type="checkbox"></input>
-                       <p>{item.väittämä}</p>
-                       <div hidden={hidden5}><button  onClick={() => muokkaaVäittämä(item)}>Muokkaa väittämä</button></div>
-                       <div hidden={hidden1}><button  onClick={() => poistaVäittämä(itemX, index)}>Poista väittämä</button></div>
+                       <input onChange={(e) => setVäittämäTeksti(e.target.value, item)} disabled={lupa} type="text" placeholder={item.väittämä}></input>
+                       <div hidden={lupa}><button onClick={() => muokkaaVäittämä(item)}>Tallenna muutokset</button></div>
+                       <div hidden={lupa}><button onClick={() => poistaVäittämä(itemX, index)}>Poista väittämä</button></div>
                     </div>)}
-                    <button onClick={() => lisääVäittämä(itemX)} hidden={hidden2}>Lisää väittämä</button>
-                    <button onClick={() => poistaKysymys(itemX, indexX)} hidden={hidden3}>Poista kysymys</button>
+                    <button onClick={() => lisääVäittämä(itemX)} hidden={lupa}>Lisää väittämä</button>
+                    <button onClick={() => poistaKysymys(indexX)} hidden={lupa}>Poista kysymys</button>
                 </div>
             </div>)}
-            <div hidden={hidden4}>
-            <input value={kysymysTeksti} onChange={(e) => setKysymysTeksti(e.target.value)} hidden={false} type="text" placeholder="Tähän annetaan kysymys"></input>
+            <div hidden={lupa}>
+            <input value={kysymysTeksti} onChange={(e) => setKysymysTeksti(e.target.value)} type="text" placeholder="Tähän annetaan kysymys"></input>
             <button onClick={lisääKysymys}>Lisää kysymys</button>
             
             </div>
