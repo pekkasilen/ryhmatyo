@@ -58,17 +58,19 @@ function Tentti_Ville() {
             <Tooltip title="Admin moodi"><IconButton onClick={() => setLupa(!lupa)} aria-label="admin"><AdminPanelSettingsIcon /></IconButton></Tooltip>
            {tentti.map((itemX, indexX) => 
            <div className="QuestionCardView">
+               {lupa === false && <Tooltip title="Poista kysymys"><IconButton onClick={() => poistaKysymys(indexX)} aria-label="delete"><DeleteIcon className="PoistaKysymys" /></IconButton></Tooltip>}
                <h3 className="InputKysymys">{itemX.kysymys}</h3>
+               
                <div className="Container">
                    {itemX.väittämät.map((item, index) => 
                    <div className="Question">
                        <Checkbox onClick={() => checkBoxPainettu(item)} checked={item.CB} type="checkbox"></Checkbox>
                        <input className="Väittämät" onChange={(e) => setVäittämäTeksti(e.target.value, item)} disabled={lupa} type="text" placeholder={item.väittämä}></input>
-                       {lupa === false && <Tooltip title="Tallenna väittämä"><IconButton onClick={() => muokkaaVäittämä(item)} aria-label="save"><SaveIcon /></IconButton></Tooltip>}
-                       {lupa === false && <Tooltip title="Poista väittämä"><IconButton onClick={() => poistaVäittämä(itemX, index)} aria-label="delete"><DeleteIcon /></IconButton></Tooltip>}
+                       {lupa === false && <Tooltip title="Tallenna väittämä"><IconButton onClick={() => muokkaaVäittämä(item)} aria-label="save"><SaveIcon className="TallennaVäittämä" /></IconButton></Tooltip>}
+                       {lupa === false && <Tooltip title="Poista väittämä"><IconButton onClick={() => poistaVäittämä(itemX, index)} aria-label="delete"><DeleteIcon className="TallennaVäittämä" /></IconButton></Tooltip>}
                     </div>)}
                     {lupa === false && <Tooltip title="Lisää väittämä"><IconButton onClick={() => lisääVäittämä(itemX)} aria-label="add"><AddCircleIcon /></IconButton></Tooltip>}
-                    {lupa === false && <Tooltip title="Poista kysymys"><IconButton onClick={() => poistaKysymys(indexX)} aria-label="delete"><DeleteIcon /></IconButton></Tooltip>}
+                    
                 </div>
             </div>)}
             <div hidden={lupa}>

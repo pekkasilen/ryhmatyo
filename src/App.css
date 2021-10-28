@@ -52,10 +52,8 @@
   height:auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   color: whitesmoke;
   align-self: center;
-  align-items: center;
   margin: 0.55em;
   box-shadow: -30px 30px 20px rgba(0,0,0,0.35);
 }
@@ -75,7 +73,12 @@
   height: auto;
   width: auto;
   padding: 2px;
-  display: flexbox;
+  display: flex;
+}
+
+.Question button {
+  width: 6%;
+  margin: 5px;
 }
 
 
@@ -87,4 +90,11 @@
 
 .Väittämät {
   border:none;
+  width: 70%;
+}
+
+.PoistaKysymys {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
 }
