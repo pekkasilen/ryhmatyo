@@ -1,60 +1,75 @@
 /*  Kristian Asti
-    27.10.2021
+    28.10.2021
     Full Stack 2021-22
 
     Tenttisovellus-ryhmätyö, Kristianin toteutus
 */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { kysymykset } from './KristianData.js';
-
-/* const axios = require('axios'); */
 
 
 function TenttiKristian() {
 
-  const [Kysymykset, setKysymykset] = useState(kysymykset);
-
-  /*
-  const [Kysymykset, setKysymykset]
-    = useState([
-      {
-        kysymys: "Paljonko on 1 + 1?",
-        vaihtoehdot: ["0", "1", "2", "3"],
-        vastaukset: [false, false, true, false],
-        CB: [false, false, false, false]
-      }
-    ]);
-  */
-
+  const [Tentti, setTentti] = useState(kysymykset);
 
   // Muutetaan CB:n arvoa käsitellyn kysymyksen kohdalla.
   const checkBox = (kysymysIndeksi, vastausIndeksi) => {
-    let uusiVastaus = [...Kysymykset];
-    let uusiCB = uusiVastaus[kysymysIndeksi].CB;
+    let uusiTentti = [...Tentti];
+    let uusiCB = uusiTentti[kysymysIndeksi].CB;
     uusiCB[vastausIndeksi] = !uusiCB[vastausIndeksi];
-
-    setKysymykset(uusiVastaus);
-    console.log(Kysymykset[kysymysIndeksi].CB);
+    setTentti(uusiTentti);
+    console.log(Tentti[kysymysIndeksi].CB);
   };
 
   const onkoOikein = (kysymysIndeksi) => {
-    let oikeatVastaukset = Kysymykset[kysymysIndeksi].vastaukset;
-    let annetutVastaukset = Kysymykset[kysymysIndeksi].CB;
+    let oikeatVastaukset = Tentti[kysymysIndeksi].vastaukset;
+    let annetutVastaukset = Tentti[kysymysIndeksi].CB;
 
     if (oikeatVastaukset.every((e, i) => e === annetutVastaukset[i])) {
       return "Nappiin meni!";
     } else {
       return "Valitettavasti pieleen..."
-    }
-  }
+    };
+  };
+
+  const poistaTentti = () => {
+    localStorage.clear();
+    alert("Tallennettu tentti poistettu.");
+  };
+
+  const tallenaTentti = () => {
+    localStorage.setItem("Kristian", JSON.stringify(Tentti));
+    alert("Tentti tallennettu!");
+  };
+
+  const lataaTentti = () => {
+    let setti = localStorage.getItem("Kristian");
+    if (setti === null) {
+      alert("Ei tallennettua tenttiä!")
+    } else {
+      setTentti([...JSON.parse(setti)]);
+    };
+  };
+
+  const tyhjennaTentti = () => {
+    let tyhjaTentti = [...Tentti];
+    tyhjaTentti.forEach(Q => {
+      Q.CB.forEach((_, cbInd, cbArray) => cbArray[cbInd] = false);
+    });
+    setTentti(tyhjaTentti);
+  };
 
 
   return (
     <div>
       <p>KRISTIANIN TENTTIRENDERI</p>
+      <button onClick={tallenaTentti}>Tallenna tentti</button>
+      <button onClick={lataaTentti}>Lataa tentti</button>
+      <button onClick={tyhjennaTentti}>Tyhjennä tentti</button>
+      <button onClick={poistaTentti}>Poista tallennettu tentti</button>
       <hr></hr>
-      {Kysymykset.map((Q, Qind) =>
+      {Tentti.map((Q, Qind) =>
         <div key={Qind}>
           <p>{Q.kysymys}</p>
           {Q.vaihtoehdot.map((V, Vind) =>
@@ -72,6 +87,6 @@ function TenttiKristian() {
       <hr></hr>
     </div>
   );
-}
+};
 
 export default TenttiKristian;
