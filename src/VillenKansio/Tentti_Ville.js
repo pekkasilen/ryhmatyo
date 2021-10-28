@@ -1,5 +1,9 @@
 import React, {useState} from 'react'
 import Data_Ville from "./Data_Ville.json"
+import { Box, Divider, ListItemText, Paper, Typography } from "@mui/material";
+import { Checkbox } from "@mui/material";
+import { Container } from "@mui/material";
+import { Button } from "@mui/material";
 
 function Tentti_Ville() {
 
@@ -50,15 +54,16 @@ function Tentti_Ville() {
     }
 
     return (
-        <div>
-        <button onClick={adminMode}>Admin mode</button>
+        <Container maxWidth="sm">
+            <Box sx={{ bgcolor: '#cfe8fc', height: "auto" }}  >
+            <button onClick={adminMode}>Admin mode</button>
            {tentti.map((itemX, indexX) => 
            <div className="QuestionCardView">
                <input disabled={lupa} type="text" placeholder={itemX.kysymys}></input>
-               <div className="Container">
+               <div>
                    {itemX.väittämät.map((item, index) => 
                    <div className="Question">
-                       <input onClick={() => checkBoxPainettu(item)} checked={item.CB} type="checkbox"></input>
+                       <Checkbox onClick={() => checkBoxPainettu(item)} checked={item.CB} type="checkbox"></Checkbox>
                        <input onChange={(e) => setVäittämäTeksti(e.target.value, item)} disabled={lupa} type="text" placeholder={item.väittämä}></input>
                        <div hidden={lupa}><button onClick={() => muokkaaVäittämä(item)}>Tallenna muutokset</button></div>
                        <div hidden={lupa}><button onClick={() => poistaVäittämä(itemX, index)}>Poista väittämä</button></div>
@@ -73,7 +78,10 @@ function Tentti_Ville() {
             
             </div>
             <button onClick={tallennaTentti}>Tallenna tentti</button>
-        </div>
+            
+        </Box>
+      
+        </Container>
     )
 }
 
