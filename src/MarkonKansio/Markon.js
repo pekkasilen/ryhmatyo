@@ -9,6 +9,7 @@ function Markon() {
   const clickedStorage = window.localStorage;
 
   const isOnList = (qid, aid) => {
+    if(clickedStorage.getItem(1)===null) return
     if (clickedStorage.getItem(1).includes(qid + "-" + aid)) { 
       return true; 
     }
@@ -18,7 +19,6 @@ function Markon() {
   }
 
   const clicked = (qid, aid) => {
-    //if(clickedStorage.getItem(1)!==clickedList) console.log("ei täsmää")//setClickedList(clickedStorage.getItem(1));
     if (clickedList.includes(qid + "-" + aid)) { 
       setClickedList(clickedList.filter(a => (a !== qid + "-" + aid))); 
       clickedStorage.setItem(1,clickedList.filter(a => (a !== qid + "-" + aid)));
@@ -34,6 +34,7 @@ function Markon() {
     let correct = [questions.map((q) => q.correct).join(',')];
     console.log("correctAnswersList: " + correct);
     console.log("clickedList: " + clickedList);
+    if(clickedStorage.getItem(1)===null) return
     console.log("localStorage: " + clickedStorage.getItem(1));
   }
 
