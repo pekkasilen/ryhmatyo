@@ -37,6 +37,9 @@
   }
 }
 
+.ContainerMUI {
+  background: linear-gradient(to right top, #39c5f0,#16fd7e);
+}
 
 .QuestionCardView {
   background: linear-gradient(
@@ -80,4 +83,8 @@
   background: transparent;
   margin: 0.35em;
   color: whitesmoke;
+}
+
+.Väittämät {
+  border:none;
 }

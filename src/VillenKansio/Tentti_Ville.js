@@ -54,8 +54,8 @@ function Tentti_Ville() {
     }
 
     return (
-        <Container maxWidth="sm">
-            <Box sx={{ bgcolor: '#cfe8fc', height: "auto" }}  >
+        <Container className="ContainerMUI" maxWidth="sm">
+            <Box sx={{  height: "100vh" }}  >
             <button onClick={adminMode}>Admin mode</button>
            {tentti.map((itemX, indexX) => 
            <div className="QuestionCardView">
@@ -64,7 +64,7 @@ function Tentti_Ville() {
                    {itemX.väittämät.map((item, index) => 
                    <div className="Question">
                        <Checkbox onClick={() => checkBoxPainettu(item)} checked={item.CB} type="checkbox"></Checkbox>
-                       <input onChange={(e) => setVäittämäTeksti(e.target.value, item)} disabled={lupa} type="text" placeholder={item.väittämä}></input>
+                       <input className="Väittämät" onChange={(e) => setVäittämäTeksti(e.target.value, item)} disabled={lupa} type="text" placeholder={item.väittämä}></input>
                        <button hidden={lupa} onClick={() => muokkaaVäittämä(item)}>Tallenna muutokset</button>
                        <button hidden={lupa} onClick={() => poistaVäittämä(itemX, index)}>Poista väittämä</button>
                     </div>)}
