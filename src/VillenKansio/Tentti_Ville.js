@@ -3,7 +3,7 @@ import Data_Ville from "./Data_Ville.json"
 
 function Tentti_Ville() {
 
-    const [tentti,setTentti] = useState(Data_Ville)
+    const [tentti,setTentti] = useState(localStorage.getItem("Villen") !== null?JSON.parse(localStorage.getItem("Villen")):Data_Ville)
     const [kysymysTeksti, setKysymysTeksti] = useState("")
     const [hidden1,setHidden1] = useState (true)
     const [hidden2,setHidden2] = useState (true)
@@ -44,6 +44,7 @@ function Tentti_Ville() {
 
     const tallennaTentti = () => {
         alert("Tällä hetkellä Tallenna tentti ei tee mitään")
+        localStorage.setItem("Villen",JSON.stringify(tentti))
         // ehkä joku osaa muokata tuota data filua?
     }
 
