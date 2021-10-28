@@ -8,11 +8,12 @@ import { FormControlLabel } from "@mui/material";
 import { Button } from "@mui/material";
 
 const CheckBoxes = (props) => {
-    const [checked, setChecked] = useState(false);
 
+    const [checked, setChecked] = useState((localStorage.getItem((props.k.toString()+props.v.toString())))!=null
+                                           ?eval(localStorage.getItem((props.k.toString()+props.v.toString())))
+                                           : false);
     useEffect(()=>{
         props.hc(props.k,props.v);
-        //console.log("vastattu kysymykseen "+props.k+" checkkaamalla vastausta "+props.v);
     },[checked]);
     return(
       <FormControlLabel
@@ -60,6 +61,7 @@ export default function PekanTentti() {
         var updateChecks = [...checks];
         updateChecks[k-1][v-1]=!checks[k-1][v-1]
         setChecks(updateChecks);
+        localStorage.setItem(k.toString()+v.toString(),(!checks[k-1][v-1]).toString());
     }
     
 
