@@ -8,7 +8,7 @@
 import React, { useState, useEffect } from 'react';
 import { kysymykset } from './KristianData.js';
 
-const axios = require('axios');
+/* const axios = require('axios'); */
 
 
 function TenttiKristian() {
