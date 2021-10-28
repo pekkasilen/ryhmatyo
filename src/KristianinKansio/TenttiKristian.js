@@ -1,6 +1,6 @@
 /*  Kristian Asti
     27.10.2021
-    Full Stack 2020-21
+    Full Stack 2021-22
 
     Tenttisovellus-ryhmätyö, Kristianin toteutus
 */
@@ -56,17 +56,17 @@ function TenttiKristian() {
       <hr></hr>
       {Kysymykset.map((Q, Qind) =>
         <div key={Qind}>
-          {Q.kysymys}
+          <p>{Q.kysymys}</p>
           {Q.vaihtoehdot.map((V, Vind) =>
             <div key={Vind}>
-              <p>
-                <input type="checkbox" id={V}
-                  onChange={() => checkBox(Qind, Vind)}></input>
-                <label htmlFor={V}>{V}</label>
-              </p>
+              <input type="checkbox" id={V}
+                onChange={() => checkBox(Qind, Vind)}></input>
+              <label htmlFor={V}>{V}</label>
             </div>)}
-          {onkoOikein(Qind)}
-          <p><br></br></p>
+          <p>{onkoOikein(Qind)}</p>
+          <p>
+            <br></br>
+          </p>
         </div>
       )}
       <hr></hr>
