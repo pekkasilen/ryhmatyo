@@ -59,7 +59,7 @@ function TenttiKristian() {
           <p>{Q.kysymys}</p>
           {Q.vaihtoehdot.map((V, Vind) =>
             <div key={Vind}>
-              <input type="checkbox" id={V}
+              <input type="checkbox" id={V} checked={Q.CB[Vind]}
                 onChange={() => checkBox(Qind, Vind)}></input>
               <label htmlFor={V}>{V}</label>
             </div>)}
