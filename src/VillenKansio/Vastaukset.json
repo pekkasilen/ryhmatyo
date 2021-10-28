@@ -2,17 +2,17 @@
     {"kysymys":"Montako kertaa seitsemän on seitsemän?", "väittämät":[
         {"väittämä": "2", "CB": false},
         {"väittämä": "7", "CB": false},
-        {"väittämä": "1", "CB": false},
+        {"väittämä": "1", "CB": true},
         {"väittämä": "49", "CB": false}
     ]
     },
     {"kysymys":"Ketkä heistä olivat Aku Ankan veljenpoikia?", "väittämät":[
         {"väittämä": "Kupu", "CB": false},
-        {"väittämä": "Hupu", "CB": false},
+        {"väittämä": "Hupu", "CB": true},
         {"väittämä": "Pupu", "CB": false},
-        {"väittämä": "Lupu", "CB": false},
+        {"väittämä": "Lupu", "CB": true},
         {"väittämä": "Rupu", "CB": false},
-        {"väittämä": "Tupu", "CB": false}
+        {"väittämä": "Tupu", "CB": true}
     ]
     }
 ]

@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Data_Ville from "./Data_Ville.json"
+import Vastaukset from "./Vastaukset.json"
 import { Box, Checkbox, Container} from "@mui/material";
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -7,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import SaveIcon from '@mui/icons-material/Save';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
 function Tentti_Ville() {
 
@@ -52,6 +54,10 @@ function Tentti_Ville() {
         // ehkä joku osaa muokata tuota data filua?
     }
 
+    const testaaTentti = () => {
+        (JSON.stringify(tentti) === JSON.stringify(Vastaukset))?alert("KAIKKI OIKEIN!!"):alert("VÄÄRIN MENI!")
+    }
+
     return (
         <Container className="ContainerMUI" maxWidth="sm">
             <Box sx={{  height: "auto" }}  >
@@ -78,7 +84,8 @@ function Tentti_Ville() {
             <button onClick={lisääKysymys}>Lisää kysymys</button>
             
             </div>
-            <Tooltip title="Tallenna tentti"><IconButton onClick={tallennaTentti} aria-label="save"><SaveIcon /></IconButton></Tooltip>
+            <Tooltip title="Tallenna localStorageen"><IconButton onClick={tallennaTentti} aria-label="save"><SaveIcon /></IconButton></Tooltip>
+            <Tooltip title="Testaa osuitko oikeaan"><IconButton onClick={testaaTentti} aria-label="save"><AssignmentTurnedInIcon /></IconButton></Tooltip>
             
             
         </Box>
