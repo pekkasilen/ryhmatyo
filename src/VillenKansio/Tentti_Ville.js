@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import Data_Ville from "./Data_Ville.json"
-import { Box, Divider, ListItemText, Paper, Typography } from "@mui/material";
-import { Checkbox } from "@mui/material";
-import { Container } from "@mui/material";
-import { Button } from "@mui/material";
+import { Box, Checkbox, Container} from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import SaveIcon from '@mui/icons-material/Save';
 
 function Tentti_Ville() {
 
@@ -55,7 +56,7 @@ function Tentti_Ville() {
 
     return (
         <Container className="ContainerMUI" maxWidth="sm">
-            <Box sx={{  height: "100vh" }}  >
+            <Box sx={{  height: "auto" }}  >
             <button onClick={adminMode}>Admin mode</button>
            {tentti.map((itemX, indexX) => 
            <div className="QuestionCardView">
@@ -65,11 +66,11 @@ function Tentti_Ville() {
                    <div className="Question">
                        <Checkbox onClick={() => checkBoxPainettu(item)} checked={item.CB} type="checkbox"></Checkbox>
                        <input className="Väittämät" onChange={(e) => setVäittämäTeksti(e.target.value, item)} disabled={lupa} type="text" placeholder={item.väittämä}></input>
-                       <button hidden={lupa} onClick={() => muokkaaVäittämä(item)}>Tallenna muutokset</button>
-                       <button hidden={lupa} onClick={() => poistaVäittämä(itemX, index)}>Poista väittämä</button>
+                       {lupa === false && <IconButton onClick={() => muokkaaVäittämä(item)} aria-label="save"><SaveIcon /></IconButton>}
+                       {lupa === false && <IconButton onClick={() => poistaVäittämä(itemX, index)} aria-label="delete"><DeleteIcon /></IconButton>}
                     </div>)}
-                    <button onClick={() => lisääVäittämä(itemX)} hidden={lupa}>Lisää väittämä</button>
-                    <button onClick={() => poistaKysymys(indexX)} hidden={lupa}>Poista kysymys</button>
+                    {lupa === false && <IconButton onClick={() => lisääVäittämä(itemX)} aria-label="add"><AddCircleIcon /></IconButton>}
+                    {lupa === false && <IconButton onClick={() => poistaKysymys(indexX)} aria-label="delete"><DeleteIcon /></IconButton>}
                 </div>
             </div>)}
             <div hidden={lupa}>
@@ -78,6 +79,7 @@ function Tentti_Ville() {
             
             </div>
             <button onClick={tallennaTentti}>Tallenna tentti</button>
+            
             
         </Box>
       
