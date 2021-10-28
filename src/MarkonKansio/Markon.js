@@ -9,7 +9,7 @@ function Markon() {
   const clickedStorage = window.localStorage;
 
   const isOnList = (qid, aid) => {
-    if(clickedStorage.getItem(1)===null) return
+    if(clickedStorage.getItem(1)===null) return false
     if (clickedStorage.getItem(1).includes(qid + "-" + aid)) { 
       return true; 
     }
