@@ -9,6 +9,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import SaveIcon from '@mui/icons-material/Save';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 
 function Tentti_Ville() {
 
@@ -58,6 +59,10 @@ function Tentti_Ville() {
         (JSON.stringify(tentti) === JSON.stringify(Vastaukset))?alert("KAIKKI OIKEIN!!"):alert("VÄÄRIN MENI!")
     }
 
+    const näytäVastaukset = () => {
+        setTentti(Vastaukset)
+    }
+
     return (
         <Container className="ContainerMUI" maxWidth="sm">
             <Box sx={{  height: "auto" }}  >
@@ -85,7 +90,8 @@ function Tentti_Ville() {
             
             </div>
             <Tooltip title="Tallenna localStorageen"><IconButton onClick={tallennaTentti} aria-label="save"><SaveIcon /></IconButton></Tooltip>
-            <Tooltip title="Testaa osuitko oikeaan"><IconButton onClick={testaaTentti} aria-label="save"><AssignmentTurnedInIcon /></IconButton></Tooltip>
+            <Tooltip title="Testaa osuitko oikeaan"><IconButton onClick={testaaTentti} aria-label="testaa"><AssignmentTurnedInIcon /></IconButton></Tooltip>
+            {lupa === false && <Tooltip title="Katso oikeat vastaukset"><IconButton onClick={näytäVastaukset} aria-label="vastaukset"><FactCheckIcon /></IconButton></Tooltip>}
             
             
         </Box>
