@@ -59,14 +59,14 @@ function Tentti_Ville() {
             <button onClick={adminMode}>Admin mode</button>
            {tentti.map((itemX, indexX) => 
            <div className="QuestionCardView">
-               <input disabled={lupa} type="text" placeholder={itemX.kysymys}></input>
-               <div>
+               <h3 className="InputKysymys">{itemX.kysymys}</h3>
+               <div className="Container">
                    {itemX.väittämät.map((item, index) => 
                    <div className="Question">
                        <Checkbox onClick={() => checkBoxPainettu(item)} checked={item.CB} type="checkbox"></Checkbox>
                        <input onChange={(e) => setVäittämäTeksti(e.target.value, item)} disabled={lupa} type="text" placeholder={item.väittämä}></input>
-                       <div hidden={lupa}><button onClick={() => muokkaaVäittämä(item)}>Tallenna muutokset</button></div>
-                       <div hidden={lupa}><button onClick={() => poistaVäittämä(itemX, index)}>Poista väittämä</button></div>
+                       <button hidden={lupa} onClick={() => muokkaaVäittämä(item)}>Tallenna muutokset</button>
+                       <button hidden={lupa} onClick={() => poistaVäittämä(itemX, index)}>Poista väittämä</button>
                     </div>)}
                     <button onClick={() => lisääVäittämä(itemX)} hidden={lupa}>Lisää väittämä</button>
                     <button onClick={() => poistaKysymys(indexX)} hidden={lupa}>Poista kysymys</button>
