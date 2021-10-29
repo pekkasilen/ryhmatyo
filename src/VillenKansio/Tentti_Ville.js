@@ -45,8 +45,12 @@ function Tentti_Ville() {
     }
 
     const lisääKysymys = () => {
-        tentti.push({kysymys: kysymysTeksti, väittämät: []})
+        if (kysymysTeksti === "") {
+            alert("Tyhjä kysymys!")
+        } else {
+        tentti.push({kysymys: kysymysTeksti, väittämät: [{väittämä: "haluamasi väittämä",CB: false}]})
         setTentti([...tentti])
+        setKysymysTeksti("")}
     }
 
     const tallennaTentti = () => {
@@ -84,9 +88,9 @@ function Tentti_Ville() {
                     
                 </div>
             </div>)}
-            <div hidden={lupa}>
-            <input value={kysymysTeksti} onChange={(e) => setKysymysTeksti(e.target.value)} type="text" placeholder="Tähän annetaan kysymys"></input>
-            <button onClick={lisääKysymys}>Lisää kysymys</button>
+            <div className="QuestionCardView">
+            {lupa === false && <input value={kysymysTeksti} onChange={(e) => setKysymysTeksti(e.target.value)} type="text" placeholder="haluamasi kysymys"></input>}
+            {lupa === false && <Tooltip title="Lisää kysymys"><IconButton onClick={lisääKysymys} aria-label="add"><AddCircleIcon /></IconButton></Tooltip>}
             
             </div>
             <Tooltip title="Tallenna localStorageen"><IconButton onClick={tallennaTentti} aria-label="save"><SaveIcon /></IconButton></Tooltip>
