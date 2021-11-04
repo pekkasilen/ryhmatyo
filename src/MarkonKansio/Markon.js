@@ -4,13 +4,15 @@ import questions from './questions-data.json';
 import React, { useState } from 'react';
 
 function Markon() {
+  const muistiTila = window.localStorage;
+  const [checkedList, setCheckedList] = useState((muistiTila.getItem("c"))!==null?JSON.parse(muistiTila.getItem("c")):[]);
+  const [oikein, setOikein] = useState(0);
+  const [vaarin, setVaarin] = useState(0);
+  const [nayta, setNayta] = useState(false);
 
-  const [clickedList, setClickedList] = useState([]);
-  const clickedStorage = window.localStorage;
-
-  const isOnList = (qid, aid) => {
-    if(clickedStorage.getItem(1)===null) return false
-    if (clickedStorage.getItem(1).includes(qid + "-" + aid)) { 
+  const muistiTilaCheck = (qid, aid) => {
+    if((muistiTila.getItem("c"))===null) return false
+    if (checkedList.includes(qid + aid)) { 
       return true; 
     }
     else { 
@@ -18,28 +20,26 @@ function Markon() {
     }
   }
 
-  const clicked = (qid, aid) => {
-    if (clickedList.includes(qid + "-" + aid)) { 
-      setClickedList(clickedList.filter(a => (a !== qid + "-" + aid))); 
-      clickedStorage.setItem(1,clickedList.filter(a => (a !== qid + "-" + aid)));
+  const muistiTilaSet = (qid, aid) => {
+    if (checkedList.includes(qid + aid)) { 
+      setCheckedList(checkedList.filter(a => (a !== qid + aid))); 
+      muistiTila.setItem("c",JSON.stringify(checkedList.filter(a => (a !== qid + aid))));
       return; 
     }
     else { 
-      setClickedList([...clickedList, qid + "-" + aid]) 
-      clickedStorage.setItem(1,[...clickedList, qid + "-" + aid]);
+      setCheckedList([...checkedList, qid + aid]) 
+      muistiTila.setItem("c",JSON.stringify([...checkedList, [qid + aid]]));
     }
   }
 
   const check = () => {
-    let correct = [questions.map((q) => q.correct).join(',')];
-    console.log("correctAnswersList: " + correct);
-    console.log("clickedList: " + clickedList);
-    if(clickedStorage.getItem(1)===null) return
-    console.log("localStorage: " + clickedStorage.getItem(1));
-  }
-
-  const empty = () => {
-  clickedStorage.setItem(1,[]);
+    let correct = ([questions.map((q) => q.correct).join(',')]+ '').split(",") ;
+    let oik = 0;
+    let vaar = 0;
+    checkedList.map(i=>correct.includes(i)?oik++:vaar++)
+    setOikein(oik);
+    setVaarin(vaar)
+    setNayta(true)
   }
 
   return (
@@ -52,14 +52,16 @@ function Markon() {
           <tbody>
             {q.answer.map(a =>
               <tr key={a.id}><td >
-                <input type="checkbox" checked={isOnList(q.id, a.id)} onClick={() => clicked(q.id, a.id)} id={q.id + "-" + a.id} readOnly></input>{a.answ}
+                <input type="checkbox" checked={muistiTilaCheck(q.id, a.id)} onChange={()=>muistiTilaSet(q.id, a.id)} ></input>
+                {a.answ}
               </td></tr>
             )}
           </tbody>
         </table>
       )}
       <button onClick={() => check()}>Testaa vastaukset</button>
-      <button onClick={() => empty()}>Tyhjää vastaukset</button>
+      <button onClick={() => {muistiTila.removeItem("c"); setNayta(false); setCheckedList([]);}}>Tyhjää vastaukset</button>
+      {nayta && <><div>Oikeat vastaukset: {oikein}</div><div>Väärät vastaukset: {vaarin}</div></> }
     </>
   )
 }
