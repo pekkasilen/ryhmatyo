@@ -1,25 +1,24 @@
-[{   "id":"1",
+[{   "id":"q1",
     "category": "javascript",
     "question":"Mitä muuttujan näkyvyysalue tarkoittaa?",
     "answer": [
-        {"id":"1", "answ":"Sitä, kuinka kaukaa muuttuja näkyy ilman kaukoputkea tai kiikareita"},
-        {"id":"2", "answ":"Sitä, missä kohtaa ohjelmaa muuttujaa voi käyttää"},
-        {"id":"3", "answ":"Sitä, miten helppo muuttujien käyttöä on synkronoida säikeiden kesken"},
-        {"id":"4", "answ":"Sitä, miten helppo muuttujia on käyttää eri ohjelman osista"},
-        {"id":"5", "answ":"Sitä, miten helppo muuttujien käyttöä on synkronoida säikeiden kesken"}
+        {"id":"a1", "answ":"Sitä, kuinka kaukaa muuttuja näkyy ilman kaukoputkea tai kiikareita"},
+        {"id":"a2", "answ":"Sitä, missä kohtaa ohjelmaa muuttujaa voi käyttää"},
+        {"id":"a3", "answ":"Sitä, miten helppo muuttujien käyttöä on synkronoida säikeiden kesken"},
+        {"id":"a4", "answ":"Sitä, miten helppo muuttujia on käyttää eri ohjelman osista"},
+        {"id":"a5", "answ":"Sitä, miten helppo muuttujien käyttöä on synkronoida säikeiden kesken"}
     ],
-    "correct": ["1-2" ,"1-4"]
+    "correct": ["q1a2" ,"q1a4"]
 },
-{   "id":"2",
+{   "id":"q2",
     "category": "javascript",
     "question":"Luokkien hyvä puoli on, että",
     "answer": [
-        {"id":"1", "answ":"niiden avulla koodia on helpompi moduloida"},
-        {"id":"2", "answ":"niden avulla on helppo uudelleenkäyttää ohjelmakoodia"},
-        {"id":"3", "answ":"niiden avulla on helppo kirjoittaa koodia, joka tukee hyvin kompositiota"},
-        {"id":"4", "answ":"ne tarjoavat hyvän abstraktion kaikkeen mahdolliseen"},
-        {"id":"5", "answ":"niiden avulla on helppo kirjoittaa monisäikeisiä sovelluksia"}
+        {"id":"a1", "answ":"niiden avulla koodia on helpompi moduloida"},
+        {"id":"a2", "answ":"niden avulla on helppo uudelleenkäyttää ohjelmakoodia"},
+        {"id":"a3", "answ":"niiden avulla on helppo kirjoittaa koodia, joka tukee hyvin kompositiota"},
+        {"id":"a4", "answ":"ne tarjoavat hyvän abstraktion kaikkeen mahdolliseen"},
+        {"id":"a5", "answ":"niiden avulla on helppo kirjoittaa monisäikeisiä sovelluksia"}
     ],
-    "correct": ["2-2" ,"2-5"]
+    "correct": ["q2a1", "q2a3" ,"q2a5"]
 }]
-
