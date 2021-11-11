@@ -5,7 +5,7 @@ import { TextField, ButtonGroup, Divider, ListItemText, Paper, Typography } from
 import { Checkbox } from "@mui/material";
 import { FormControlLabel, FormControl, RadioGroup, Radio, FormLabel} from "@mui/material";
 import { Box, Button, Modal } from "@mui/material";
-
+import axios from 'axios';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -27,7 +27,7 @@ const CheckBoxes = (props) => {
     const [checked, setChecked] = useState(false);
     useEffect(()=>{
         if(initialized){
-            console.log("called useEffect for "+props.k+" "+props.v)
+            //console.log("called useEffect for "+props.k+" "+props.v)
             props.dispatch({"type":"handleChange", "qid":props.k,"vid":props.v});
         }else{
             setInitialized(true);
@@ -84,6 +84,22 @@ export default function PekanTentti() {
     const [tempIsCorrect, setTempIsCorrect] = useState([]);
     const [tempID, setTempID] = useState("");
     const [tempCorrects, setTempCorrects] = useState([]);
+    const [kysymykset, setKysymykset] = useState([]);
+    const [muutoksia, setMuutoksia] = useState(false);
+    const qURL = "http://localhost:8000/kysymykset";
+    
+    useEffect(()=>{
+        if(muutoksia){
+            axios.post(qURL,kysymykset);
+            setMuutoksia(false);
+        }
+    },[muutoksia])
+
+    useEffect(async ()=>{
+        var haetutKysymykset = await axios.get(qURL);
+        setKysymykset(haetutKysymykset.data);
+    },[])
+    
     const handleOpen = () =>{
         setOpen(true);
     }
@@ -97,10 +113,9 @@ export default function PekanTentti() {
     }
 
     const dispatch = (props) => {
-        console.log(props.d);
         switch(props.type){
             case "editQuestion":
-                console.log("Editing q "+props.qid)
+                //console.log("Editing q "+props.qid)
                 setTempID(props.qid);
                 setTempKyssari(props.k);
                 setTempVastaukset(props.v.map((x)=> x.v));
@@ -110,7 +125,7 @@ export default function PekanTentti() {
                 var updateChecks = [...checks];
                 updateChecks[props.qid-1][props.vid-1]=!checks[props.qid-1][props.vid-1] //manuaalinen deep-copy tarvitaan?
                 setChecks(updateChecks);
-                console.log(checks);
+                //console.log(checks);
                 localStorage.setItem(props.qid.toString()+props.vid.toString(),(!checks[props.qid-1][props.vid-1]).toString());
                 break;
             case "handleSavingQuestion":
@@ -124,7 +139,10 @@ export default function PekanTentti() {
                     var tid = eval(tempID);
                 } else tid = kys.length+1;
                 var valmisKyssari = {"id":tid,"kysymys":tempKyssari,"vastaukset":tallennettavaVastaus,"oikeat":tempCorrects};
-                kys[tid-1] = valmisKyssari;
+                var kysymyksetKopio = JSON.parse(JSON.stringify(kysymykset));
+                kysymyksetKopio[tid] = valmisKyssari;
+                setKysymykset(kysymyksetKopio);
+                setMuutoksia(true);
                 handleClose();
                 break;
         }
@@ -197,7 +215,7 @@ export default function PekanTentti() {
             <Grid container spacing={1}>
                 </Grid>
                     <Grid item xs={12} key={1}>
-                        {kys.map((x,i)=> <Kyssari in={x} key={i} dispatch={dispatch}></Kyssari>)}
+                        {kysymykset.map((x,i)=> <Kyssari in={x} key={i} dispatch={dispatch}></Kyssari>)}
                     </Grid>
                 <Grid>
             </Grid>
