@@ -1,0 +1,127 @@
+{
+  "koulut": [
+    {
+      "id": 1,
+      "koulunNimi": "Pikkolan ala-aste",
+      "luokat": [
+        {
+          "kirjain": "A",
+          "oppilaat": [
+            {
+              "nimi": "Otto Onninpoika",
+              "osaalukea": true
+            },
+            {
+              "nimi": "Pekka Perä",
+              "osaalukea": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tentit": [
+    {
+      "id": 1,
+      "aihe": "Historia",
+      "kysymykset": [
+        {
+          "tapaus": "Ketä kutsuttiin sekä Karpaattien neroksi että Ajatusten Tonavaksi?",
+          "vastaukset": [
+            {
+              "teksti": "Mikhail Gorbatsov",
+              "vastattu": false
+            },
+            {
+              "teksti": "Gheorghe Hagi",
+              "vastattu": false
+            },
+            {
+              "teksti": "Enver Hoxha",
+              "vastattu": false
+            },
+            {
+              "teksti": "Nicolae Ceausescu",
+              "vastattu": false
+            }
+          ]
+        },
+        {
+          "tapaus": "Kenen tekemä on J. L. Runebergin muistomerkki Helsingin Esplanadin puistossa?",
+          "vastaukset": [
+            {
+              "teksti": "Wäinö Aaltosen",
+              "vastattu": false
+            },
+            {
+              "teksti": "Laila Pullisen",
+              "vastattu": false
+            },
+            {
+              "teksti": "Walter Runebergin",
+              "vastattu": false
+            },
+            {
+              "teksti": "Tyko Sallisen",
+              "vastattu": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "aihe": "Maantieto",
+      "kysymykset": [
+        {
+          "tapaus": "Mikä oli nykyisen Pirkkalan kunnan nimi vuosina 1922-1938?",
+          "vastaukset": [
+            {
+              "teksti": "Akaa",
+              "vastattu": false
+            },
+            {
+              "teksti": "Sakkola",
+              "vastattu": false
+            },
+            {
+              "teksti": "Etelä-Pirkkala",
+              "vastattu": false
+            },
+            {
+              "teksti": "Nicolae Ceausescu",
+              "vastattu": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "aihe": "Urheilu",
+      "kysymykset": [
+        {
+          "tapaus": "Missä pidettiin vuoden 1920 kesäolympialaiset?",
+          "vastaukset": [
+            {
+              "teksti": "Antwerpenissä",
+              "vastattu": false
+            },
+            {
+              "teksti": "Melbournessa",
+              "vastattu": false
+            },
+            {
+              "teksti": "Pariisissa",
+              "vastattu": false
+            },
+            {
+              "teksti": "Tokiossa",
+              "vastattu": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

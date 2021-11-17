@@ -1,0 +1,14 @@
+
+body {
+display: flex;
+justify-content: normal;
+background-color: lightblue;
+padding: 20px;
+}
+
+.ui-input-text {
+  border: none !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
+}
+
